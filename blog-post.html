@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Orange Door Investment Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --orange: #F6A86D;
+            --orange-dark: #f59a52;
+            --teal: #5F8B9B;
+            --teal-dark: #527a89;
+            --charcoal: #333333;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--charcoal);
+            line-height: 1.8;
+            background: var(--white);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--charcoal);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .nav-brand-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .orange-word {
+            color: var(--orange);
+        }
+
+        .back-link {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--orange);
+        }
+
+        /* Blog Post Content */
+        .blog-hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .blog-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 60px 0 40px;
+            color: var(--white);
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .blog-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 800px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Article Content */
+        .blog-article {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .blog-content {
+            font-size: 19px;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        .blog-content p {
+            margin-bottom: 24px;
+            font-size: 19px;
+        }
+
+        /* Heading Styles - All headings with strong visual distinction */
+        .blog-content h1 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 38px !important;
+            font-weight: 800 !important;
+            color: var(--charcoal) !important;
+            margin: 48px 0 24px !important;
+            line-height: 1.3 !important;
+            padding-left: 20px;
+            border-left: 5px solid var(--orange);
+        }
+
+        .blog-content h2 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 32px !important;
+            font-weight: 700 !important;
+            color: var(--charcoal) !important;
+            margin: 40px 0 20px !important;
+            line-height: 1.3 !important;
+            padding-left: 16px;
+            border-left: 4px solid var(--teal);
+        }
+
+        .blog-content h3 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 26px !important;
+            font-weight: 700 !important;
+            color: var(--charcoal) !important;
+            margin: 36px 0 18px !important;
+            line-height: 1.3 !important;
+            padding-left: 12px;
+            border-left: 3px solid var(--orange);
+        }
+
+        .blog-content h4 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 22px !important;
+            font-weight: 600 !important;
+            color: var(--charcoal) !important;
+            margin: 32px 0 16px !important;
+            line-height: 1.4 !important;
+        }
+
+        .blog-content h5 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            color: var(--charcoal) !important;
+            margin: 28px 0 14px !important;
+            line-height: 1.4 !important;
+        }
+
+        .blog-content h6 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            color: #666 !important;
+            margin: 24px 0 12px !important;
+            line-height: 1.4 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* List Styles */
+        .blog-content ul,
+        .blog-content ol {
+            margin: 24px 0;
+            padding-left: 40px;
+            font-size: 19px;
+        }
+
+        .blog-content li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .blog-content ul li::marker {
+            color: var(--orange);
+        }
+
+        .blog-content ol li::marker {
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        /* Blockquote Styles */
+        .blog-content blockquote {
+            border-left: 5px solid var(--orange);
+            padding: 24px 32px;
+            margin: 36px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f4f5 100%);
+            font-style: italic;
+            font-size: 21px;
+            color: #555;
+            border-radius: 0 12px 12px 0;
+            position: relative;
+        }
+
+        .blog-content blockquote::before {
+            content: '"';
+            font-size: 60px;
+            color: var(--orange);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: Georgia, serif;
+        }
+
+        /* Image Styles */
+        .blog-content img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 36px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Text Formatting */
+        .blog-content strong,
+        .blog-content b {
+            font-weight: 700;
+            color: #222;
+        }
+
+        .blog-content em,
+        .blog-content i {
+            font-style: italic;
+        }
+
+        .blog-content u {
+            text-decoration: underline;
+            text-decoration-color: var(--orange);
+            text-underline-offset: 3px;
+        }
+
+        .blog-content s,
+        .blog-content strike {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        /* Code Blocks */
+        .blog-content pre {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 24px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 32px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .blog-content code {
+            background: #f0f4f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 16px;
+            color: var(--teal-dark);
+        }
+
+        .blog-content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        /* Links */
+        .blog-content a {
+            color: var(--teal);
+            text-decoration: none;
+            border-bottom: 2px solid var(--orange);
+            transition: all 0.3s;
+        }
+
+        .blog-content a:hover {
+            color: var(--orange);
+            border-bottom-color: var(--teal);
+        }
+
+        /* Text Alignment */
+        .blog-content [style*="text-align: center"],
+        .blog-content [align="center"] {
+            text-align: center;
+        }
+
+        .blog-content [style*="text-align: right"],
+        .blog-content [align="right"] {
+            text-align: right;
+        }
+
+        .blog-content [style*="text-align: justify"] {
+            text-align: justify;
+        }
+
+        /* Preserve spacing from editor */
+        .blog-content br {
+            display: block;
+            content: "";
+            margin-top: 12px;
+        }
+
+        .blog-content br+br {
+            margin-top: 24px;
+        }
+
+        .blog-content div {
+            margin-bottom: 16px;
+            line-height: inherit;
+        }
+
+        .blog-content div:empty {
+            margin-bottom: 24px;
+            min-height: 24px;
+        }
+
+        /* Line height support */
+        .blog-content [style*="line-height"] {
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        /* Spacer blocks */
+        .blog-content div[style*="height: 40px"] {
+            margin: 20px 0;
+        }
+
+        /* Superscript and Subscript */
+        .blog-content sup {
+            font-size: 0.7em;
+            vertical-align: super;
+        }
+
+        .blog-content sub {
+            font-size: 0.7em;
+            vertical-align: sub;
+        }
+
+        /* Highlighted text */
+        .blog-content [style*="background-color: rgb(255, 235, 59)"],
+        .blog-content [style*="background-color: #ffeb3b"] {
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Video embeds */
+        .blog-content iframe {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        /* Table Styles */
+        .blog-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 32px 0;
+            font-size: 17px;
+        }
+
+        .blog-content th,
+        .blog-content td {
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .blog-content th {
+            background: var(--charcoal);
+            color: white;
+            font-weight: 600;
+        }
+
+        .blog-content tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* Horizontal Rule */
+        .blog-content hr {
+            border: none;
+            border-top: 2px solid var(--light-gray);
+            margin: 40px 0;
+        }
+
+        /* Font Size Support (from editor) */
+        .blog-content font[size="1"] {
+            font-size: 12px;
+        }
+
+        .blog-content font[size="2"] {
+            font-size: 14px;
+        }
+
+        .blog-content font[size="3"] {
+            font-size: 17px;
+        }
+
+        .blog-content font[size="4"] {
+            font-size: 20px;
+        }
+
+        .blog-content font[size="5"] {
+            font-size: 24px;
+        }
+
+        .blog-content font[size="6"] {
+            font-size: 30px;
+        }
+
+        .blog-content font[size="7"] {
+            font-size: 36px;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+            background: var(--light-gray);
+            border-radius: 16px;
+            margin-top: 60px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Related Posts */
+        .related-section {
+            background: var(--light-gray);
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+
+        .related-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .related-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .related-card-content {
+            padding: 24px;
+        }
+
+        .related-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+
+        .related-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .footer p {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 28px;
+            }
+
+            .blog-hero {
+                height: 300px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 100px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 100px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="https://assets.cdn.filesafe.space/Out59Sg1pInehCQh9Rc8/media/68e92f9f35e8696fd61d360c.png"
+                        alt="Logo" class="nav-logo">
+                    <span class="nav-brand-text"><span class="orange-word">Orange</span> Door Investment Group</span>
+                </a>
+            </div>
+            <a href="/blog.html" class="back-link">← Back to Blog</a>
+        </div>
+    </nav>
+
+    <!-- Blog Content -->
+    <article id="blogPost">
+        <div class="loading">Loading article...</div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Orange Door Investment Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const API_URL = '/api';
+
+        async function loadBlogPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+
+            if (!slug) {
+                document.getElementById('blogPost').innerHTML = '<div class="error">Blog post not found.</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/blog/${slug}`);
+
+                if (!response.ok) {
+                    throw new Error('Post not found');
+                }
+
+                const post = await response.json();
+                renderBlogPost(post);
+                document.title = `${post.title} - Orange Door Investment Group`;
+
+            } catch (error) {
+                document.getElementById('blogPost').innerHTML = '<div class="error">Blog post not found. <a href="/">Return home</a></div>';
+            }
+        }
+
+        function renderBlogPost(post) {
+            const formattedDate = new Date(post.createdAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            document.getElementById('blogPost').innerHTML = `
+                <div class="blog-hero">
+                    <img src="${post.image || 'https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg'}" alt="${post.title}">
+                    <div class="blog-hero-overlay">
+                        <div class="container">
+                            ${post.category ? `<span class="blog-category">${post.category}</span>` : ''}
+                            <h1 class="blog-title">${post.title}</h1>
+                            <div class="blog-meta">
+                                <span>📅 ${formattedDate}</span>
+                                ${post.author ? `<span>✍️ ${post.author}</span>` : ''}
+                                ${post.readTime ? `<span>⏱️ ${post.readTime} min read</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-article">
+                    <div class="blog-content">
+                        ${post.content}
+                    </div>
+
+                    ${post.author ? `
+                    <div class="author-box">
+                        <img src="${post.authorImage || 'https://via.placeholder.com/80'}" alt="${post.author}" class="author-avatar">
+                        <div class="author-info">
+                            <h4>${post.author}</h4>
+                            <p>${post.authorBio || 'Orange Door Investment Group Team'}</p>
+                        </div>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+
+            loadRelatedPosts(post.slug);
+        }
+
+        async function loadRelatedPosts(currentSlug) {
+            try {
+                const response = await fetch(`${API_URL}/blog`);
+                const data = await response.json();
+
+                const relatedPosts = data.posts.filter(p => p.slug !== currentSlug).slice(0, 3);
+
+                if (relatedPosts.length > 0) {
+                    const relatedHTML = `
+                        <section class="related-section">
+                            <div class="container">
+                                <h2 class="related-title">Related Articles</h2>
+                                <div class="related-grid">
+                                    ${relatedPosts.map(post => `
+                                        <a href="/blog-post.html?slug=${post.slug}" class="related-card">
+                                            <img src="${post.image || 'https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg'}" alt="${post.title}">
+                                            <div class="related-card-content">
+                                                <h3>${post.title}</h3>
+                                                <p>${post.excerpt || post.description || ''}</p>
+                                            </div>
+                                        </a>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </section>
+                    `;
+
+                    document.querySelector('.blog-article').insertAdjacentHTML('afterend', relatedHTML);
+                }
+            } catch (error) {
+                console.error('Error loading related posts:', error);
+            }
+        }
+
+        loadBlogPost();
+    </script>
+</body>
+
+</html>
